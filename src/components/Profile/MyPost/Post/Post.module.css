@@ -1,0 +1,21 @@
+.item {
+	max-width: 50%;
+	background-color: rgb(243, 155, 46);
+	color: rgb(0, 0, 0);
+	border: solid 1px black;
+	margin: 5px;
+}
+.item img {
+	width: 50px;
+	border-radius: 30px;
+	margin-left: 30px;
+	padding-top: 5px;
+}
+.message {
+	text-align: center;
+}
+.likes {
+	text-align: right;
+	color: red;
+	margin-left: 85%;
+}
