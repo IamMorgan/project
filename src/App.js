@@ -11,7 +11,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 
 
-const App = (props) => {
+
+
+const App = ({dialogsProps, messageProps}) => {
 	return (
 		<BrowserRouter>
 			<div className='app-wrapper'>
@@ -25,7 +27,7 @@ const App = (props) => {
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} /> */}
 
-					<Route path='/dialogs' render={() => <Dialogs />} />
+					<Route path='/dialogs' render={() => <Dialogs dialogsData = {dialogsProps} messagesData = {messageProps}/>} />
 					<Route path='/profile' render={() => <Profile />} />
 					<Route path='/news' render={() => <News />} />
 					<Route path='/music' render={() => <Music />} />
