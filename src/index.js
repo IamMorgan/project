@@ -20,11 +20,18 @@ import * as serviceWorker from './serviceWorker';
 		{id: 5, message: 'London is the capital of Great Britain'},
 		{id: 6, message: 'Where is my mind?'}
 	];
+	let postsData = [
+		{id: 1, message: 'OMG!', like: 27},
+		{id: 2, message: 'Oh... This Russian', like: 33},
+		{id: 3, message: 'Vasia! Uhodim! Tut streliaut!', like: 9},
+		{id: 4, message: 'What you doing ?', like: 2},
+		{id: 5, message: 'It is my two post', like: 15},
+		{id: 6, message: 'It is my first post', like: 1}
+	];
 
 
 
-
-ReactDOM.render(<App dialogsProps={dialogsData} messageProps={messagesData} />, document.getElementById('root'));
+ReactDOM.render(<App dialogsProps={dialogsData} messageProps={messagesData} postsProps={postsData} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
