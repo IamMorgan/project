@@ -7,23 +7,31 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-	let dialogsElements = props.dialogsData.map((dialog) => {
+
+	let dialogsElements = props.state.dialogsData.map((dialog) => {
 		return (
 			<DialogItem name={dialog.name} id={dialog.id} key = {dialog.id}/>
 		)
 	});
-	
-	let messageElements = props.messagesData.map((message) => {
+	let friendsIcon = props.icon.friends.map((icon) => {
 		return (
-			<Message message={message.message} key={message.message}/>
+			<img src={icon.icon} key={icon.id}/>
 		)
 	});
+	let messageElements = props.state.messagesData.map((message) => {
+		return (
+			<Message message={message.message} key={message.message}/>
+			
+		)
+	});
+
 	return (
 		<div className={classes.dialogs}>
 			<div className={classes.dialogsItems}>
 				{dialogsElements}
 			</div>
 			<div className={classes.messages}>
+				{friendsIcon}
 				{messageElements}
 			</div>
 		</div>
