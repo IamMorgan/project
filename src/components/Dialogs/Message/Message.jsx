@@ -7,10 +7,12 @@ import classes from './../Dialogs.module.css';
 const Message = (props) => {
 	console.log(props)
 	
+	
 	return (
-		<div className={classes.message}>
+		<fieldset className={classes.message}>
+			<legend ><img src={props.src}/></legend>
 			{props.message}
-		</div>
+		</fieldset>
 	);
 }
 
