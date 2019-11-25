@@ -10,7 +10,8 @@ const Message = (props) => {
 	
 	return (
 		<fieldset className={classes.message}>
-			<legend ><img src={props.src}/></legend>
+			<legend ><img src={props.icon.icon}/></legend>
+			
 			{props.message}
 		</fieldset>
 	);

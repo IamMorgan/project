@@ -14,17 +14,14 @@ const Dialogs = (props) => {
 			<DialogItem name={dialog.name} id={dialog.id} key = {dialog.id}/>
 		)
 	});
-	let friendsIcon = props.icon.friends.map((icon) => {
-		return (
-			<Message src={icon.icon} id={icon.id} key={icon.id} />
-		)
-	});
+
 	let messageElements = props.state.messagesData.map((message) => {
 		return (
-			<Message message={message.message} id={message.id} key={message.message}/>
+			<Message message={message.message} id={message.id} key={message.id} icon = {props.icon.friends.find(icon => icon.id === message.id)}/>
 		)
 	});
-	
+
+
 	
 	return (
 		<div className={classes.dialogs}>
@@ -32,13 +29,10 @@ const Dialogs = (props) => {
 				{dialogsElements}
 			</div>
 			<div className={classes.messages}>
-				{friendsIcon}
 				{messageElements}
 			</div>
 		</div>
 	);
 }
-
-
 
 export default Dialogs;
