@@ -4,3 +4,11 @@
 .posts {
 	margin-top: 10px;
 }
+.text {
+	padding: 10px;
+	margin: 5px;
+	width: 35.3em;
+	max-width: 35.3em;
+	max-height: 50px;
+	resize: none;
+}

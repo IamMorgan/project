@@ -11,7 +11,7 @@ const Dialogs = (props) => {
 
 	let dialogsElements = props.state.dialogsData.map((dialog) => {
 		return (
-			<DialogItem name={dialog.name} id={dialog.id} key = {dialog.id}/>
+			<DialogItem name={dialog.name} id={dialog.id} key = {dialog.id} icon = {props.icon.friends.find(icon => icon.id === dialog.id)}/>
 		)
 	});
 
@@ -20,6 +20,13 @@ const Dialogs = (props) => {
 			<Message message={message.message} id={message.id} key={message.id} icon = {props.icon.friends.find(icon => icon.id === message.id)}/>
 		)
 	});
+
+	let newMessage = React.createRef();
+	let addMessage = () => {
+		let text = newMessage.current.value;
+		alert('in development' + ' ' + text);
+	}
+
 
 
 	
@@ -30,6 +37,10 @@ const Dialogs = (props) => {
 			</div>
 			<div className={classes.messages}>
 				{messageElements}
+				<textarea className={classes.text} ref={newMessage} placeholder='add message'></textarea>
+				<div>
+					<button onClick={addMessage}>Set Message</button>
+				</div>
 			</div>
 		</div>
 	);

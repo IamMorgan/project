@@ -11,15 +11,23 @@ const MyPosts = (props) => {
 		)
 	});
 
+	let newPostElement = React.createRef();
+
+	let AddPost = () => {
+		let text = newPostElement.current.value;
+		alert('in development' + ' ' + text);
+	};
+
+
 	return (
 		<div className={classes.postsBlock}>
 			<h3>My posts</h3>
 			<div>
 				<div>
-					<textarea></textarea>
+					<button onClick={AddPost}>Add post</button>
 				</div>
 				<div>
-					<button>Add post</button>
+					<textarea className={classes.text} ref={newPostElement} placeholder='add post'></textarea>
 				</div>
 			</div>
 			<div className={classes.posts}>

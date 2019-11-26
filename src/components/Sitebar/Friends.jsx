@@ -5,6 +5,7 @@ import classes from './Friends.module.css';
 
 
 const Friends = (props) => {
+	
 	let friendsIcon = props.state.map((icon) => {
 		return (
 			<div className={classes.avatar} key = {icon.id}>
@@ -14,9 +15,12 @@ const Friends = (props) => {
 	});
 	return (
 		<div className={classes.friends}>
-			{friendsIcon}
+			{friendsIcon[0]}
+			{friendsIcon[1]}
+			{friendsIcon[2]}
 		</div>
 	)
+	
 };
 
 export default Friends;

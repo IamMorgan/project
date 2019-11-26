@@ -5,8 +5,6 @@ import classes from './../Dialogs.module.css';
 
 
 const Message = (props) => {
-	console.log(props)
-	
 	
 	return (
 		<fieldset className={classes.message}>
