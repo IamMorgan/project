@@ -3,6 +3,7 @@
 }
 .posts {
 	margin-top: 10px;
+	max-width: 980px;
 }
 .text {
 	padding: 10px;

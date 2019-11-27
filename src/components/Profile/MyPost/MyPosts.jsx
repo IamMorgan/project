@@ -3,7 +3,7 @@ import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-
+	
 
 	let postsElement = props.postsData.map((post) => {
 		return (
@@ -13,18 +13,21 @@ const MyPosts = (props) => {
 
 	let newPostElement = React.createRef();
 
-	let AddPost = () => {
+	let addPost = () => {
+		
 		let text = newPostElement.current.value;
-		alert('in development' + ' ' + text);
+		props.addPosts(text);
+		newPostElement.current.value = '';
 	};
 
+	
 
 	return (
 		<div className={classes.postsBlock}>
 			<h3>My posts</h3>
 			<div>
 				<div>
-					<button onClick={AddPost}>Add post</button>
+					<button onClick={addPost}>Add post</button>
 				</div>
 				<div>
 					<textarea className={classes.text} ref={newPostElement} placeholder='add post'></textarea>

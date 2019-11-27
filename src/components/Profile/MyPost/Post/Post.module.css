@@ -13,6 +13,7 @@
 }
 .message {
 	text-align: center;
+	max-width: 100%;
 }
 .likes {
 	text-align: right;

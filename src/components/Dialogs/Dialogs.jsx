@@ -23,8 +23,10 @@ const Dialogs = (props) => {
 
 	let newMessage = React.createRef();
 	let addMessage = () => {
+
 		let text = newMessage.current.value;
-		alert('in development' + ' ' + text);
+		props.addMessages(text);
+		newMessage.current.value = '';
 	}
 
 
