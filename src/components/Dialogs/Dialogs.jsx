@@ -39,7 +39,7 @@ const Dialogs = (props) => {
 			</div>
 			<div className={classes.messages}>
 				{messageElements}
-				<textarea className={classes.text} ref={newMessage} placeholder='add message'></textarea>
+				<textarea className={classes.text} ref={newMessage} placeholder='add message'/>
 				<div>
 					<button onClick={addMessage}>Set Message</button>
 				</div>

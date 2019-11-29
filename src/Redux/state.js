@@ -9,7 +9,8 @@ let state ={
 			{id: 4, message: 'What you doing ?', like: 2},
 			{id: 5, message: 'It is my two post', like: 15},
 			{id: 6, message: 'It is my first post', like: 1}
-		]
+		],
+		newPostText: ''
 		
 	},
 	dialogsPage: {
@@ -43,13 +44,19 @@ let state ={
 }
 
 
-export let addPosts = (postMessage) => {
+export let addPosts = () => {
 	
 	let newPost = {
-		id: 7, message: postMessage, like: 0
+		id: 7, message: state.profilePage.newPostText, like: 0
 	};
-
 	state.profilePage.postsData.push(newPost);
+	state.profilePage.newPostText = '';
+	rerenderEntireTree(state)
+}; 
+
+export let updateNewPostText = (newText) => {
+	
+	state.profilePage.newPostText = newText;
 	rerenderEntireTree(state)
 }; 
 
@@ -58,7 +65,11 @@ export let addMessages = (messageMessage) => {
 	let newMessage = {
 		id: 7, message: messageMessage
 	}
+	let newIcon = {
+		id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
+	}
 	state.dialogsPage.messagesData.push(newMessage);
+	state.siteBar.friends.push(newIcon);
 	rerenderEntireTree(state)
 };
 
