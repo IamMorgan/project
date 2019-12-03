@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from '../render';
+let rerenderEntireTree = () => {
+	console.log('state changed');
+}
 
 let state ={
 	profilePage: {
@@ -29,7 +31,8 @@ let state ={
 			{id: 4, name: 'Migel Estebano'},
 			{id: 5, name: 'Volodia'},
 			{id: 6, name: 'Sam Durak'}
-		]
+		],
+		newMessageText: ''
 	},
 	siteBar: {
 		friends: [
@@ -42,9 +45,9 @@ let state ={
 		]
 	}
 }
+window.state = state;
 
-
-export let addPosts = () => {
+export const addPosts = () => {
 	
 	let newPost = {
 		id: 7, message: state.profilePage.newPostText, like: 0
@@ -54,23 +57,33 @@ export let addPosts = () => {
 	rerenderEntireTree(state)
 }; 
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
 	
 	state.profilePage.newPostText = newText;
 	rerenderEntireTree(state)
 }; 
 
-export let addMessages = (messageMessage) => {
+export const addMessages = () => {
 	
 	let newMessage = {
-		id: 7, message: messageMessage
+		id: 7, message: state.dialogsPage.newMessageText
 	}
 	let newIcon = {
 		id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
 	}
 	state.dialogsPage.messagesData.push(newMessage);
+	state.dialogsPage.newMessageText = '';
 	state.siteBar.friends.push(newIcon);
 	rerenderEntireTree(state)
+};
+
+export const updateNewMessageText = (newText) => {
+	state.dialogsPage.newMessageText = newText;
+	rerenderEntireTree(state)
+};
+
+export const subscribe = (observer) => {
+	rerenderEntireTree = observer;
 };
 
 export default state;
