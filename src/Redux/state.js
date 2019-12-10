@@ -48,39 +48,70 @@ let store = {
 	_callSubscriber() {
 		console.log('state changed');
 	},
-	addPosts() {
-	
-		let newPost = {
-			id: 7, message: this._state.profilePage.newPostText, like: 0
-		};
-		this._state.profilePage.postsData.push(newPost);
-		this._state.profilePage.newPostText = '';
-		this._callSubscriber(this._state)
-	},
-	updateNewPostText (newText) {
-	
-		this._state.profilePage.newPostText = newText;
-		this._callSubscriber(this._state)
-	},
-	addMessages () {
-	
-		let newMessage = {
-			id: 7, message: this._state.dialogsPage.newMessageText
-		}
-		let newIcon = {
-			id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
-		}
-		this._state.dialogsPage.messagesData.push(newMessage);
-		this._state.dialogsPage.newMessageText = '';
-		this._state.siteBar.friends.push(newIcon);
-		this._callSubscriber(this._state)
-	},
-	updateNewMessageText (newText) {
-		this._state.dialogsPage.newMessageText = newText;
-		this._callSubscriber(this._state)
-	},
 	subscribe (observer) {
 		this._callSubscriber = observer;
+	},
+
+	// addPosts() {
+	
+	// 	let newPost = {
+	// 		id: 7, message: this._state.profilePage.newPostText, like: 0
+	// 	};
+	// 	this._state.profilePage.postsData.push(newPost);
+	// 	this._state.profilePage.newPostText = '';
+	// 	this._callSubscriber(this._state)
+	// },
+	// updateNewPostText (newText) {
+	
+	// 	this._state.profilePage.newPostText = newText;
+	// 	this._callSubscriber(this._state)
+	// },
+	// addMessages () {
+	
+	// 	let newMessage = {
+	// 		id: 7, message: this._state.dialogsPage.newMessageText
+	// 	}
+	// 	let newIcon = {
+	// 		id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
+	// 	}
+	// 	this._state.dialogsPage.messagesData.push(newMessage);
+	// 	this._state.dialogsPage.newMessageText = '';
+	// 	this._state.siteBar.friends.push(newIcon);
+	// 	this._callSubscriber(this._state)
+	// },
+	// updateNewMessageText (newText) {
+	// 	this._state.dialogsPage.newMessageText = newText;
+	// 	this._callSubscriber(this._state)
+	// },
+	
+	dispatch(action) {
+		
+		if(action.type === 'ADD-POST') {
+			let newPost = {
+				id: 7, message: this._state.profilePage.newPostText, like: 0
+			};
+			this._state.profilePage.postsData.push(newPost);
+			this._state.profilePage.newPostText = '';
+			this._callSubscriber(this._state);
+		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+			this._state.profilePage.newPostText = action.newText;
+			this._callSubscriber(this._state);
+		}
+		if (action.type === 'ADD-MESSAGES') {
+			let newMessage = {
+				id: 7, message: this._state.dialogsPage.newMessageText
+			}
+			let newIcon = {
+				id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
+			}
+			this._state.dialogsPage.messagesData.push(newMessage);
+			this._state.dialogsPage.newMessageText = '';
+			this._state.siteBar.friends.push(newIcon);
+			this._callSubscriber(this._state)
+		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+			this._state.dialogsPage.newMessageText = action.newText;
+			this._callSubscriber(this._state)
+		}
 	}
 }
 
