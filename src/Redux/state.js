@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGES = 'ADD-MESSAGES';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import siteBarReducer from "./siteBar-reducer";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 
 let store = {
@@ -59,58 +58,13 @@ let store = {
 	},
 
 	dispatch(action) {
-		
-		if(action.type === ADD_POST) {
-			let newPost = {
-				id: 7, message: this._state.profilePage.newPostText, like: 0
-			};
-			this._state.profilePage.postsData.push(newPost);
-			this._state.profilePage.newPostText = '';
-			this._callSubscriber(this._state);
-		} else if (action.type === UPDATE_NEW_POST_TEXT) {
-			this._state.profilePage.newPostText = action.newText;
-			this._callSubscriber(this._state);
-		}
-		if (action.type === ADD_MESSAGES) {
-			let newMessage = {
-				id: 7, message: this._state.dialogsPage.newMessageText
-			}
-			let newIcon = {
-				id: 7, icon: 'http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png'
-			}
-			this._state.dialogsPage.messagesData.push(newMessage);
-			this._state.dialogsPage.newMessageText = '';
-			this._state.siteBar.friends.push(newIcon);
-			this._callSubscriber(this._state)
-		} else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-			this._state.dialogsPage.newMessageText = action.newText;
-			this._callSubscriber(this._state)
-		}
+		profileReducer(this._state.profilePage, action);
+		dialogsReducer(this._state.dialogsPage, action);
+		siteBarReducer(this._state.siteBar, action);
+
+		this._callSubscriber(this._state)
 	}
 }
-
-export const addPostActionCreator = () => {
-	return {
-		type: ADD_POST
-	}
-};
-export const updateNewPostTextActionCreator = (text) => {
-	return {
-		type: UPDATE_NEW_POST_TEXT, newText: text
-	}
-};
-
-export const addMessageActionCreator = () => {
-	return {
-		type: ADD_MESSAGES
-	}
-};
-export const updateNewMessageTextActionCreator = (text) => {
-	return {
-		type: UPDATE_NEW_MESSAGE_TEXT, newText: text
-	}
-};
-
 
 
 export default store;
