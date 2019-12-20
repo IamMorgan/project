@@ -45,6 +45,7 @@ let store = {
 				{id:5, icon: 'https://huntpng.com/images250/avatar-clip-transparent-5.png'},
 				{id:6, icon: 'https://www.pngarts.com/files/3/Avatar-PNG-High-Quality-Image.png'}
 			]
+			
 		}
 	},
 	getState() {
